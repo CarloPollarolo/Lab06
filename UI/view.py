@@ -1,6 +1,6 @@
 import flet as ft
 from UI.alert import AlertManager
-
+import mysql.connector
 '''
     VIEW:
     - Rappresenta l'interfaccia utente
@@ -37,6 +37,8 @@ class View:
     def update(self):
         self.page.update()
 
+
+
     def load_interface(self):
         """ Crea e aggiunge Elementi di UI alla pagina e la aggiorna. """
         self.txt_titolo = ft.Text(value=self.controller.get_nome(), size=38, weight=ft.FontWeight.BOLD)
@@ -65,6 +67,21 @@ class View:
         # Altri Pulsanti da implementare (es. "Mostra" e "Cerca")
         # TODO
 
+
+
+        self.btn_mostra=ft.CupertinoButton('Mostra',on_click=self.controller.handle_get_strumenti)
+        #clicco sto bottone che attiva la def del controller che a sua volta salva in strumenti la def richiamata dal model
+        #click su view-->handle_get_strumenti() di controller-->get_strumenti() di model
+
+
+
+        self.btn_cerca=ft.CupertinoButton('Cerca',on_click=self.controller.handle_cerca_tipo)
+
+
+
+
+
+
         # --- LAYOUT ---
         self.page.add(
             self.toggle_cambia_tema,
@@ -83,12 +100,27 @@ class View:
 
             # Sezione 3
             # TODO
+            ft.Row(spacing=20,
+                   controls=[ft.Text("Strumenti", size=20), self.btn_mostra]),
+            self.lista_strumenti,
+            ft.Divider(),
+
+
 
             # Sezione 4
-            # TODO
-        )
+            #
+            ft.Text('Cerca struento per tipo',size=20),
+            ft.Row(spacing=20,
+                   controls=[self.input_tipo_strumento, self.btn_cerca]),
+            self.lista_strumenti_ricerca)
 
     def cambia_tema(self, e):
         self.page.theme_mode = ft.ThemeMode.DARK if self.toggle_cambia_tema.value else ft.ThemeMode.LIGHT
         self.toggle_cambia_tema.label = "Tema scuro" if self.toggle_cambia_tema.value else "Tema chiaro"
         self.page.update()
+
+
+
+
+
+
