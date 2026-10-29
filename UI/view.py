@@ -1,6 +1,5 @@
 import flet as ft
 from UI.alert import AlertManager
-import mysql.connector
 '''
     VIEW:
     - Rappresenta l'interfaccia utente
@@ -65,22 +64,11 @@ class View:
         pulsante_conferma_responsabile = ft.Button("Conferma", on_click=self.controller.conferma_responsabile)
 
         # Altri Pulsanti da implementare (es. "Mostra" e "Cerca")
-        # TODO
-
-
 
         self.btn_mostra=ft.CupertinoButton('Mostra',on_click=self.controller.handle_get_strumenti)
         #clicco sto bottone che attiva la def del controller che a sua volta salva in strumenti la def richiamata dal model
         #click su view-->handle_get_strumenti() di controller-->get_strumenti() di model
-
-
-
         self.btn_cerca=ft.CupertinoButton('Cerca',on_click=self.controller.handle_cerca_tipo)
-
-
-
-
-
 
         # --- LAYOUT ---
         self.page.add(

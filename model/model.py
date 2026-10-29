@@ -109,17 +109,5 @@ class DepositoStrumenti:
 
 
 
-        '''     
-        strumenti=self.get_strumenti()
-        strumenti_per_tipo = []
-        if strumenti is None :
-            return None
-        for strumento in strumenti:
-            if strumento.tipo==tipo:
-                strumenti_per_tipo.append(strumento)
-        if not strumenti_per_tipo:
-            return None
-        return strumenti_per_tipo
-        '''
 
 
